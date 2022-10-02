@@ -13,6 +13,11 @@ const routes = [
         name: 'login',
         component: () => import('@/app/auth/LoginComponent.vue'),
     },
+    {
+        path: '/cadastrar',
+        name: 'cadastrar',
+        component: () => import('@/app/usuario/CadastroComponent'),
+    },
 ];
 
 const router = createRouter({
