@@ -1,8 +1,5 @@
 <template>
-  <loading-componet v-if="$store.getters.isLoading"></loading-componet>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+    <loading-componet v-if="$store.getters.isLoading"></loading-componet>
+    <Toast :baseZIndex="1000" />
+    <router-view />
 </template>
