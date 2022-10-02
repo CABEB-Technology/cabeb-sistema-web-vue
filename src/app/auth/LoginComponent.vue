@@ -2,11 +2,6 @@
     <div>
         <div class="d-flex justify-content-center">
             <Card style="width: 25em" class="mt-5">
-                <template #header>
-                    <!-- <div class="flex justify-content-center mt-4">
-            <img alt="logo" src="" style="width: 10em" />
-          </div> -->
-                </template>
                 <template #content>
                     <div class="text-center">
                         <h4>CABEB SISTEMA</h4>
