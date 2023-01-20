@@ -1,5 +1,5 @@
 <template>
-    <Toast :baseZIndex="1000" />
+    <Toast/>
     <loading v-if="$store.getters.isLoading"></loading>
     <router-view></router-view>
 </template>

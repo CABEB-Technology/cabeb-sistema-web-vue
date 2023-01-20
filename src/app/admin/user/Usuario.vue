@@ -1,14 +1,20 @@
 <template>
   <painel titulo="Usuários" icone="pi pi-users" :refreshFunction="obterTodos">
     <tabela headerStyle="width: 3em" id="tableComponent" :data="data">
-      <template #botoes>  </template>
+      <template #botoes> </template>
       <template #conteudo>
-        
         <Column headerStyle="width: 3em">
-          <template #body="slotProps">
-            <btn-detalhar @click="detalhar(slotProps.data)"></btn-detalhar>
-            <btn-atualizar @click="editar(slotProps.data)"></btn-atualizar>
-            <btn-deletar @click="deletar(slotProps.data)"></btn-deletar>
+          <template class="grid row align-items-center" #body="slotProps">
+            <Button
+              type="button"
+              title="Opções"
+              icon="pi pi-cog"
+              class="p-button-text p-button-lg"
+              @click="toggle($event, slotProps.data)"
+              aria-haspopup="true"
+              aria-controls="overlay_menu"
+            />
+            <Menu id="overlay_menu" ref="menu" :model="items" :popup="true" />
           </template>
         </Column>
 
@@ -35,7 +41,6 @@
             {{ slotProps.data.modificado }}
           </template>
         </Column>
-
       </template>
     </tabela>
   </painel>
@@ -48,6 +53,34 @@ export default {
   data() {
     return {
       data: [],
+      items: [
+        {
+          label: "Opções",
+          items: [
+            {
+              label: "Detalhar",
+              icon: "pi pi-info-circle",
+              command: () => {
+                this.detalhar(this.objeto);
+              },
+            },
+            {
+              label: "Editar",
+              icon: "pi pi-pencil",
+              command: () => {
+                this.editar(this.objeto);
+              },
+            },
+            {
+              label: "Deletar",
+              icon: "pi pi-trash",
+              command: () => {
+                this.deletar(this.objeto);
+              },
+            },
+          ],
+        },
+      ],
     };
   },
   mounted() {
@@ -62,6 +95,10 @@ export default {
         }
         this.$store.dispatch("removeRequest");
       });
+    },
+    toggle(event, objeto) {
+      this.objeto = objeto;
+      this.$refs.menu.toggle(event);
     },
     detalhar(prop) {
       console.log(prop);
