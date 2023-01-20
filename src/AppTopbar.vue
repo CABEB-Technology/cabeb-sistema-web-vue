@@ -1,7 +1,7 @@
 <template>
 	<div class="layout-topbar">
 		<router-link to="/" class="p-link">
-			<img alt="Logo" src="./assets/images/logo.png"  style="height: 60px;"/>
+			<img alt="Logo" src="./assets/images/logo.png"  style="height: 4rem;"/>
 		</router-link>
 		<button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle">
 			<i class="pi pi-bars"></i>
