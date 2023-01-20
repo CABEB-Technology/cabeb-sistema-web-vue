@@ -1,0 +1,46 @@
+{
+	"name": "sigi-gpa",
+	"version": "0.0.1",
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"license": "MIT",
+	"scripts": {
+		"serve": "vue-cli-service serve",
+		"build": "vue-cli-service build",
+		"lint": "vue-cli-service lint",
+		"test:unit": "vue-cli-service test:unit"
+	},
+	"devDependencies": {
+		"@vue/cli-plugin-babel": "~4.5.0",
+		"@vue/cli-plugin-eslint": "~4.5.0",
+		"@vue/cli-plugin-router": "~4.5.0",
+		"@vue/cli-service": "~4.5.0",
+		"@vue/compiler-sfc": "^3.0.0",
+		"babel-eslint": "^10.1.0",
+		"eslint": "^6.7.2",
+		"eslint-plugin-vue": "^7.0.0",
+		"sass": "^1.45.0",
+		"sass-loader": "^8.0.2"
+	},
+	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.34",
+		"@fortawesome/free-brands-svg-icons": "^5.15.2",
+		"@fortawesome/free-solid-svg-icons": "^5.15.2",
+		"@fortawesome/vue-fontawesome": "^3.0.2",
+		"@vuelidate/core": "^2.0.0-alpha.9",
+		"@vuelidate/validators": "^2.0.0-alpha.7",
+		"axios": "^1.2.3",
+		"chart.js": "3.3.2",
+		"core-js": "^3.6.5",
+		"primeflex": "^3.1.2",
+		"primeicons": "^5.0.0",
+		"primevue": "^3.12.2",
+		"prismjs": "^1.9.0",
+		"vue": "3.2.9",
+		"vue-gtag-next": "^1.14.0",
+		"vue-router": "^4.0.0-0",
+		"vuex": "^4.0.0"
+	}
+}
