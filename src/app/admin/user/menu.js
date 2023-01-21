@@ -1,6 +1,6 @@
 const menu = {
     label: 'Usuários',
-    icon: 'pi pi-users',
+    icon: 'pi pi-id-card',
     to: '/administracao/usuarios',
 };
 
