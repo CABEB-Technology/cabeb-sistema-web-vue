@@ -1,14 +1,14 @@
 <template>
   <div class="layout-topbar">
-    <router-link to="/" class="p-link">
-      <img alt="Logo" src="./assets/images/logo.png" style="height: 4rem" />
-    </router-link>
     <button
-      class="p-link layout-menu-button layout-topbar-button"
+      class="layout-topbar-logo p-link layout-topbar-button mr-2"
       @click="onMenuToggle"
     >
       <i class="pi pi-bars"></i>
     </button>
+    <router-link to="/" class="layout-topbar-logo-1">
+      <span class="ml-2">SIGI</span>
+    </router-link>
 
     <button
       class="p-link layout-topbar-menu-button layout-topbar-button"
@@ -29,6 +29,9 @@
           <i class="pi pi-user"></i>
           <span>Usuário</span>
         </button>
+      </li>
+      <li>
+        <Sessao />
       </li>
       <li>
         <button class="p-link layout-topbar-button" @click="logout">
@@ -53,10 +56,12 @@
 
 <script>
 import InformacoesUsuario from "./components/InformacoesUsuario.vue";
+import Sessao from "./components/Sessao.vue";
 
 export default {
   components: {
     InformacoesUsuario,
+    Sessao,
   },
   data() {
     return {
