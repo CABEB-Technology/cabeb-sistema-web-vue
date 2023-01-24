@@ -107,7 +107,19 @@ export default {
       console.log(prop);
     },
     deletar(prop) {
-      console.log(prop);
+      this.$store.dispatch("addRequest");
+      service.deletarUsuario(prop.id).then((res) => {
+        if(res && res.success) {
+          this.obterTodos();
+          this.$toast.add({
+            severity: "success",
+            summary: "Usuario",
+            detail: "Usuário deletado com sucesso!",
+            life: 3000,
+          });
+          this.$store.dispatch("removeRequest");
+        }
+      })
     },
   },
 };

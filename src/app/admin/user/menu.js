@@ -1,8 +1,7 @@
 const menu = {
     label: 'Usuários',
-    icon: 'pi pi-users',
+    icon: 'pi pi-id-card',
     to: '/administracao/usuarios',
-    rules: ['SOL-001'],
 };
 
 export default menu;

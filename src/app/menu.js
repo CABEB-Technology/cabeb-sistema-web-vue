@@ -1,5 +1,6 @@
-import adminMenu from './admin/menu'
+import adminMenu from './admin/menu';
+import homeMenu from './home/menu';
 
-const menu = [adminMenu];
+const menu = [homeMenu, adminMenu];
 
 export default menu;

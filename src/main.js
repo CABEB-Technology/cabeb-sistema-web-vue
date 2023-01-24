@@ -100,12 +100,16 @@ import BlockViewer from './BlockViewer';
 import Loading from './components/Loading.vue';
 import Tabela from './components/Tabela.vue';
 import Painel from './components/Painel.vue';
+import CardDash from './components/CardDash.vue';
+
 import BtnRefresh from './components/buttons/BtnRefresh.vue';
 import BtnAtualizar from './components/buttons/BtnAtualizar.vue';
 import BtnDetalhar from './components/buttons/BtnDetalhar.vue';
 import BtnDeletar from './components/buttons/BtnDeletar.vue';
 
 import store from './store/';
+import moment from 'moment';
+moment.locale('pt-BR');
 
 router.beforeEach(function(to, from, next) {
     window.scrollTo(0, 0);
@@ -126,6 +130,7 @@ library.add(fas);
 const app = createApp(AppWrapper);
 
 app.config.globalProperties.$appState = reactive({ theme: 'lara-light-indigo', darkTheme: false });
+app.config.globalProperties.$moment = moment;
 
 // app config
 app.use(PrimeVue, { ripple: true, inputStyle: 'outlined' });
@@ -148,6 +153,7 @@ app.component('BtnRefresh', BtnRefresh);
 app.component('BtnAtualizar', BtnAtualizar);
 app.component('BtnDetalhar', BtnDetalhar);
 app.component('BtnDeletar', BtnDeletar);
+app.component('CardDash', CardDash);
 
 // components awesome
 app.component('font-awesome-icon', FontAwesomeIcon);
