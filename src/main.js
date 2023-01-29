@@ -101,6 +101,7 @@ import Loading from './components/Loading.vue';
 import Tabela from './components/Tabela.vue';
 import Painel from './components/Painel.vue';
 import CardDash from './components/CardDash.vue';
+import InformacoesUsuario from "./components/InformacoesUsuario.vue";
 
 import BtnRefresh from './components/buttons/BtnRefresh.vue';
 import BtnAtualizar from './components/buttons/BtnAtualizar.vue';
@@ -154,6 +155,7 @@ app.component('BtnAtualizar', BtnAtualizar);
 app.component('BtnDetalhar', BtnDetalhar);
 app.component('BtnDeletar', BtnDeletar);
 app.component('CardDash', CardDash);
+app.component('InformacoesUsuario', InformacoesUsuario);
 
 // components awesome
 app.component('font-awesome-icon', FontAwesomeIcon);

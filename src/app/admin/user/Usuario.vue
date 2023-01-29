@@ -44,6 +44,14 @@
       </template>
     </tabela>
   </painel>
+  <Dialog
+    header="Informações de Usuário"
+    v-model:visible="displayModal"
+    :style="{ width: '25vw' }"
+    :modal="true"
+  >
+    <InformacoesUsuario :data="usuario" />
+  </Dialog>
 </template>
 
 <script>
@@ -53,6 +61,8 @@ export default {
   data() {
     return {
       data: [],
+      usuario: null,
+      displayModal: false,
       items: [
         {
           label: "Opções",
@@ -101,7 +111,8 @@ export default {
       this.$refs.menu.toggle(event);
     },
     detalhar(prop) {
-      console.log(prop);
+      this.usuario = prop;
+      this.displayModal = true;
     },
     editar(prop) {
       console.log(prop);
@@ -109,7 +120,7 @@ export default {
     deletar(prop) {
       this.$store.dispatch("addRequest");
       service.deletarUsuario(prop.id).then((res) => {
-        if(res && res.success) {
+        if (res && res.success) {
           this.obterTodos();
           this.$toast.add({
             severity: "success",
@@ -119,7 +130,7 @@ export default {
           });
           this.$store.dispatch("removeRequest");
         }
-      })
+      });
     },
   },
 };
