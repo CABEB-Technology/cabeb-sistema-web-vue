@@ -1,4 +1,4 @@
-import {axiosJwt, urlBase} from '../../../service/';
+import { axiosJwt, urlBase } from '../../../service';
 
 const url = `${urlBase}/usuario`;
 
@@ -11,5 +11,5 @@ export default {
     },
     obterUsuario(id) {
         return axiosJwt.get(`${url}/${id}`);
-    }
+    },
 };

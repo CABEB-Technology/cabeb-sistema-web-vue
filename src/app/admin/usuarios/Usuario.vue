@@ -1,7 +1,9 @@
 <template>
-  <painel titulo="Usuários" icone="pi pi-users" :refreshFunction="obterTodos">
+  <painel titulo="Usuários" icone="pi pi-id-card" :refreshFunction="obterTodos">
     <tabela headerStyle="width: 3em" id="tableComponent" :data="data">
-      <template #botoes> </template>
+      <template #botoes>
+        <btn-inserir @click="inserir"></btn-inserir>
+      </template>
       <template #conteudo>
         <Column headerStyle="width: 3em">
           <template class="grid row align-items-center" #body="slotProps">
@@ -85,7 +87,7 @@ export default {
               label: "Deletar",
               icon: "pi pi-trash",
               command: () => {
-                this.deletar(this.objeto);
+                this.confirmarExclusao(this.objeto);
               },
             },
           ],
@@ -106,16 +108,34 @@ export default {
         this.$store.dispatch("removeRequest");
       });
     },
-    toggle(event, objeto) {
-      this.objeto = objeto;
-      this.$refs.menu.toggle(event);
+    inserir() {
+      this.$router.push({
+        name: "usuario_inserir",
+      });
     },
     detalhar(prop) {
       this.usuario = prop;
       this.displayModal = true;
     },
     editar(prop) {
-      console.log(prop);
+      this.$router.push({
+        name: "usuario_atualizar",
+        params: {
+          id: prop.id,
+        },
+      });
+    },
+    confirmarExclusao(prop) {
+      this.$confirm.require({
+        message: `Tem certeza que deseja deletar o usuário ${prop.usuario}?`,
+        header: "Confirmação",
+        icon: "pi pi-exclamation-triangle",
+        acceptLabel: "Sim",
+        rejectLabel: "Não",
+        accept: () => {
+          this.deletar(prop);
+        },
+      });
     },
     deletar(prop) {
       this.$store.dispatch("addRequest");
@@ -131,6 +151,10 @@ export default {
           this.$store.dispatch("removeRequest");
         }
       });
+    },
+    toggle(event, objeto) {
+      this.objeto = objeto;
+      this.$refs.menu.toggle(event);
     },
   },
 };

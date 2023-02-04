@@ -54,7 +54,7 @@
 
 <script>
 import Sessao from "./components/Sessao.vue";
-import service from "./app/admin/user/service";
+import service from "./app/admin/usuarios/service";
 
 export default {
   components: {

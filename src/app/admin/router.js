@@ -1,12 +1,10 @@
-import userRouter from './user/router';
+import usuariosRouter from './usuarios/router';
 
 const routes = {
     path: 'administracao',
     name: 'Administracao',
     component: () => import('./Administracao.vue'),
-    children: [
-        userRouter
-    ],
+    children: [...usuariosRouter],
 };
 
 export default routes;

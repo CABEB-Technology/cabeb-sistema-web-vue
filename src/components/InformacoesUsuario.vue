@@ -50,7 +50,7 @@
           {{ email }}
         </div>
       </li>
-      <li
+      <!-- <li
         class="
           flex
           align-items-center
@@ -65,7 +65,7 @@
         <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
           {{ telefone }}
         </div>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
@@ -85,7 +85,7 @@ export default {
   mounted() {
     this.nome = this.data.usuario;
     this.email = this.data.email;
-    this.telefone = this.data.telefone;
+    // this.telefone = this.data.telefone;
   },
 };
 </script>

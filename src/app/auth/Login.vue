@@ -12,7 +12,7 @@
             type="email"
             placeholder="E-mail"
           />
-          <small class="p-error" v-if="v$.email.$error">E-mail é obrigatório</small>
+          <small class="p-error mb-3" v-if="v$.email.$error">E-mail é obrigatório</small>
 
           <input
             class="input"
@@ -21,7 +21,7 @@
             type="password"
             placeholder="Senha"
           />
-          <small class="p-error" v-if="v$.senha.$error">Senha é obrigatória</small>
+          <small class="p-error mb-3" v-if="v$.senha.$error">Senha é obrigatória</small>
 
           <button class="button mt-3" @click="send">Entrar</button>
         </form>
@@ -127,6 +127,7 @@ export default {
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  cursor: pointer;
 }
 
 .button:active {

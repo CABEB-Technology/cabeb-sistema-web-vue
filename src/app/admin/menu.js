@@ -1,10 +1,9 @@
-import userMenu from './user/menu';
+import usuariosMenu from './usuarios/menu';
+import equipeMenu from './equipe/menu';
 
 const menu = {
     label: 'ADMINISTRAÇÃO',
-    items: [
-        userMenu
-    ]
+    items: [usuariosMenu, equipeMenu],
 };
 
 export default menu;
