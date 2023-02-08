@@ -1,7 +1,4 @@
-import {axiosJwt} from "./axiosJwt";
-import {urlBase} from "./urlBase";
+import { axiosJwt } from './axiosJwt';
+import { urlBase } from './urlBase';
 
-export {
-    axiosJwt,
-    urlBase
-}
+export { axiosJwt, urlBase };

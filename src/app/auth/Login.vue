@@ -12,7 +12,9 @@
             type="email"
             placeholder="E-mail"
           />
-          <small class="p-error mb-3" v-if="v$.email.$error">E-mail é obrigatório</small>
+          <small class="p-error mb-3" v-if="v$.email.$error"
+            >E-mail é obrigatório</small
+          >
 
           <input
             class="input"
@@ -21,7 +23,9 @@
             type="password"
             placeholder="Senha"
           />
-          <small class="p-error mb-3" v-if="v$.senha.$error">Senha é obrigatória</small>
+          <small class="p-error mb-3" v-if="v$.senha.$error"
+            >Senha é obrigatória</small
+          >
 
           <button class="button mt-3" @click="send">Entrar</button>
         </form>
@@ -30,17 +34,19 @@
       <div class="overlay-container">
         <div class="overlay">
           <div class="overlay-panel overlay-right">
-            <img class="img" src="../../assets/images/logo-removebg-preview.png" />
+            <img
+              class="img"
+              src="../../assets/images/logo-removebg-preview.png"
+            />
           </div>
         </div>
       </div>
-      
     </div>
   </div>
 </template>
 
 <script>
-import service from "./service";
+import { loginService } from "./service";
 import useVuelidate from "@vuelidate/core";
 import { required } from "@vuelidate/validators";
 
@@ -72,7 +78,7 @@ export default {
         email: this.email,
         senha: this.senha,
       };
-      service
+      loginService
         .login(credenciais)
         .then((res) => {
           if (res.data.token != null) {

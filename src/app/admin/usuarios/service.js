@@ -2,7 +2,7 @@ import { axiosJwt, urlBase } from '../../../service';
 
 const url = `${urlBase}/usuario`;
 
-export default {
+export const usuarioService = {
     obterTodos() {
         return axiosJwt.get(url);
     },

@@ -54,7 +54,7 @@
 
 <script>
 import Sessao from "./components/Sessao.vue";
-import service from "./app/admin/usuarios/service";
+import { usuarioService } from "./app/admin/usuarios/service";
 
 export default {
   components: {
@@ -72,12 +72,14 @@ export default {
   methods: {
     obterUsuario() {
       this.$store.dispatch("addRequest");
-      service.obterUsuario(localStorage.getItem("id_usuario")).then((res) => {
-        if (res && res.success) {
-          this.perfil = res.data;
-        }
-        this.$store.dispatch("removeRequest");
-      });
+      usuarioService
+        .obterUsuario(localStorage.getItem("id_usuario"))
+        .then((res) => {
+          if (res && res.success) {
+            this.perfil = res.data;
+          }
+          this.$store.dispatch("removeRequest");
+        });
     },
     onMenuToggle(event) {
       this.$emit("menu-toggle", event);

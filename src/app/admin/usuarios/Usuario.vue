@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import service from "./service";
+import { usuarioService } from "./service";
 
 export default {
   data() {
@@ -101,7 +101,7 @@ export default {
   methods: {
     obterTodos() {
       this.$store.dispatch("addRequest");
-      service.obterTodos().then((res) => {
+      usuarioService.obterTodos().then((res) => {
         if (res && res.success) {
           this.data = res.data;
         }
@@ -139,7 +139,7 @@ export default {
     },
     deletar(prop) {
       this.$store.dispatch("addRequest");
-      service.deletarUsuario(prop.id).then((res) => {
+      usuarioService.deletarUsuario(prop.id).then((res) => {
         if (res && res.success) {
           this.obterTodos();
           this.$toast.add({

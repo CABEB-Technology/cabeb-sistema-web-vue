@@ -1,6 +1,4 @@
-import adminRouter from './admin/router';
-import homeRouter from './home/router';
+import { administracaoRotas } from './admin/router';
+import { homeRota } from './home/router';
 
-const router = [adminRouter, homeRouter];
-
-export default router;
+export const appRotas = [administracaoRotas, homeRota];

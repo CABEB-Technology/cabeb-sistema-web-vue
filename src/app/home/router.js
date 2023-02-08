@@ -1,12 +1,8 @@
-import dashboardRouter from './dashboard/router';
+import { dashboardRotas } from './dashboard/router';
 
-const routes = {
+export const homeRota = {
     path: '',
     name: 'Home',
     component: () => import('./Home.vue'),
-    children: [
-        dashboardRouter
-    ],
+    children: [dashboardRotas],
 };
-
-export default routes;
