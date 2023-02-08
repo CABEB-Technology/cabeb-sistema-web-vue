@@ -47,10 +47,10 @@
       >
         <div class="text-500 w-6 md:w-2 font-medium">E-mail</div>
         <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
-          brendson@gmail.com
+          {{ email }}
         </div>
       </li>
-      <li
+      <!-- <li
         class="
           flex
           align-items-center
@@ -63,15 +63,9 @@
       >
         <div class="text-500 w-6 md:w-2 font-medium">Telefone</div>
         <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1">
-          (81)98861-5976
+          {{ telefone }}
         </div>
-      </li>
-      <!-- <li class="flex align-items-center py-3 px-2 border-top-1 border-bottom-1 surface-border flex-wrap">
-            <div class="text-500 w-6 md:w-2 font-medium">Plot</div>
-            <div class="text-900 w-full md:w-8 md:flex-order-0 flex-order-1 line-height-3">
-                A group of professional bank robbers start to feel the heat from police
-                when they unknowingly leave a clue at their latest heist.</div>
-        </li> -->
+      </li> -->
     </ul>
   </div>
 </template>
@@ -83,13 +77,15 @@ export default {
   },
   data() {
     return {
-        nome: null,
-        email: null,
-        telefone: null
-    }
+      nome: null,
+      email: null,
+      telefone: null,
+    };
   },
-  created(){
-    this.nome = this.data.nome
-  }
+  mounted() {
+    this.nome = this.data.usuario;
+    this.email = this.data.email;
+    // this.telefone = this.data.telefone;
+  },
 };
 </script>

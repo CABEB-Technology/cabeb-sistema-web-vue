@@ -1,6 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import App from './App.vue';
-import appRotas from './app/router.js';
+import { appRotas } from './app/router.js';
 import { trackRouter } from 'vue-gtag-next';
 
 const routes = [
@@ -19,18 +19,19 @@ const routes = [
     {
         path: '/error',
         name: 'error',
-        component: () => import('./pages/Error.vue')
+        component: () => import('./pages/Error.vue'),
     },
     {
-        path: '/notfound',
+        path: '/:catchAll(.*)',
         name: 'notfound',
-        component: () => import('./pages/NotFound.vue')
+        component: () => import('./pages/NotFound.vue'),
+        hidden: true,
     },
     {
         path: '/access',
         name: 'access',
-        component: () => import('./pages/Access.vue')
-    }
+        component: () => import('./pages/Access.vue'),
+    },
 ];
 
 const router = createRouter({

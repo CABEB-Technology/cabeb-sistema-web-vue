@@ -1,5 +1,6 @@
 <template>
     <Toast/>
+    <ConfirmDialog />
     <loading v-if="$store.getters.isLoading"></loading>
     <router-view></router-view>
 </template>

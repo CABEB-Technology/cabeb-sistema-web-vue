@@ -47,31 +47,40 @@
       :style="{ width: '25vw' }"
       :modal="true"
     >
-      <InformacoesUsuario :data="data" />
-
-      <template #footer> </template>
+      <InformacoesUsuario :data="perfil" />
     </Dialog>
   </div>
 </template>
 
 <script>
-import InformacoesUsuario from "./components/InformacoesUsuario.vue";
 import Sessao from "./components/Sessao.vue";
+import { usuarioService } from "./app/admin/usuarios/service";
 
 export default {
   components: {
-    InformacoesUsuario,
     Sessao,
   },
   data() {
     return {
       displayModal: false,
-      data: {
-        nome: "Brendson Victor",
-      },
+      perfil: null,
     };
   },
+  created() {
+    this.obterUsuario();
+  },
   methods: {
+    obterUsuario() {
+      this.$store.dispatch("addRequest");
+      usuarioService
+        .obterUsuario(localStorage.getItem("id_usuario"))
+        .then((res) => {
+          if (res && res.success) {
+            this.perfil = res.data;
+          }
+          this.$store.dispatch("removeRequest");
+        });
+    },
     onMenuToggle(event) {
       this.$emit("menu-toggle", event);
     },

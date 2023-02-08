@@ -25,7 +25,7 @@
 import AppTopBar from "./AppTopbar.vue";
 import AppMenu from "./AppMenu.vue";
 import AppFooter from "./AppFooter.vue";
-import appMenu from "./app/menu.js";
+import { appMenus } from "./app/menu.js";
 
 export default {
   emits: ["change-theme"],
@@ -35,7 +35,7 @@ export default {
       staticMenuInactive: false,
       overlayMenuActive: false,
       mobileMenuActive: false,
-      menu: [...appMenu],
+      menu: [...appMenus],
     };
   },
   watch: {

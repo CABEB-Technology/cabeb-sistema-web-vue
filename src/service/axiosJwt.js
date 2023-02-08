@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { errorHandler } from './erroHandler';
 
 export const axiosJwt = axios.create({
     headers: {
@@ -7,24 +8,23 @@ export const axiosJwt = axios.create({
 });
 
 axiosJwt.interceptors.request.use(
-    config => {
+    (config) => {
         const token = localStorage.getItem('token');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
     },
-    error => {
+    (error) => {
         return Promise.reject(error);
     }
 );
 
-
 axiosJwt.interceptors.response.use(
-    response => {
+    (response) => {
         return { success: true, data: response.data };
     },
-    // error => {
-    //     return { success: false, errors: errorHandler(error) };
-    // }
+    (error) => {
+        return { success: false, errors: errorHandler(error) };
+    }
 );

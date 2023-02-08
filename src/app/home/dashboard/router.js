@@ -1,7 +1,5 @@
-const routes = {
+export const dashboardRotas = {
     path: '',
     name: 'Dashboard',
     component: () => import('./Dashboard.vue'),
 };
-
-export default routes;

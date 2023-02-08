@@ -67,7 +67,7 @@ import Rating from 'primevue/rating';
 import RadioButton from 'primevue/radiobutton';
 import Ripple from 'primevue/ripple';
 import SelectButton from 'primevue/selectbutton';
-import ScrollPanel from 'primevue/scrollpanel'
+import ScrollPanel from 'primevue/scrollpanel';
 import ScrollTop from 'primevue/scrolltop';
 import Slider from 'primevue/slider';
 import Sidebar from 'primevue/sidebar';
@@ -101,17 +101,19 @@ import Loading from './components/Loading.vue';
 import Tabela from './components/Tabela.vue';
 import Painel from './components/Painel.vue';
 import CardDash from './components/CardDash.vue';
+import InformacoesUsuario from './components/InformacoesUsuario.vue';
 
 import BtnRefresh from './components/buttons/BtnRefresh.vue';
 import BtnAtualizar from './components/buttons/BtnAtualizar.vue';
 import BtnDetalhar from './components/buttons/BtnDetalhar.vue';
 import BtnDeletar from './components/buttons/BtnDeletar.vue';
+import BtnInserir from './components/buttons/BtnInserir.vue';
 
 import store from './store/';
 import moment from 'moment';
 moment.locale('pt-BR');
 
-router.beforeEach(function(to, from, next) {
+router.beforeEach(function (to, from, next) {
     window.scrollTo(0, 0);
     next();
 });
@@ -129,7 +131,10 @@ library.add(fas);
 
 const app = createApp(AppWrapper);
 
-app.config.globalProperties.$appState = reactive({ theme: 'lara-light-indigo', darkTheme: false });
+app.config.globalProperties.$appState = reactive({
+    theme: 'lara-light-indigo',
+    darkTheme: false,
+});
 app.config.globalProperties.$moment = moment;
 
 // app config
@@ -153,7 +158,9 @@ app.component('BtnRefresh', BtnRefresh);
 app.component('BtnAtualizar', BtnAtualizar);
 app.component('BtnDetalhar', BtnDetalhar);
 app.component('BtnDeletar', BtnDeletar);
+app.component('BtnInserir', BtnInserir);
 app.component('CardDash', CardDash);
+app.component('InformacoesUsuario', InformacoesUsuario);
 
 // components awesome
 app.component('font-awesome-icon', FontAwesomeIcon);

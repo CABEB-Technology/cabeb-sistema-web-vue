@@ -1,10 +1,6 @@
-import dashboardMenu from './dashboard/menu';
+import { dashboardMenu } from './dashboard/menu';
 
-const menu = {
+export const homeMenu = {
     label: 'HOME',
-    items: [
-        dashboardMenu
-    ]
+    items: [dashboardMenu],
 };
-
-export default menu;

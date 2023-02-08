@@ -1,6 +1,4 @@
-import adminMenu from './admin/menu';
-import homeMenu from './home/menu';
+import { administracaoMenu } from './admin/menu';
+import { homeMenu } from './home/menu';
 
-const menu = [homeMenu, adminMenu];
-
-export default menu;
+export const appMenus = [homeMenu, administracaoMenu];
