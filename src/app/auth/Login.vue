@@ -192,7 +192,7 @@ export default {
 }
 
 .sign-in-container {
-  left: 0;
+  left: 50%;
   width: 50%;
   z-index: 2;
 }
@@ -232,7 +232,6 @@ export default {
 .overlay-container {
   position: absolute;
   top: 0;
-  left: 50%;
   width: 50%;
   height: 100%;
   overflow: hidden;
