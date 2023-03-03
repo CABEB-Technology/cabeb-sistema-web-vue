@@ -108,6 +108,8 @@ import BtnAtualizar from './components/buttons/BtnAtualizar.vue';
 import BtnDetalhar from './components/buttons/BtnDetalhar.vue';
 import BtnDeletar from './components/buttons/BtnDeletar.vue';
 import BtnInserir from './components/buttons/BtnInserir.vue';
+import BtnSalvar from './components/buttons/BtnSalvar.vue';
+import BtnCancelar from './components/buttons/BtnCancelar.vue';
 
 import store from './store/';
 import moment from 'moment';
@@ -138,7 +140,79 @@ app.config.globalProperties.$appState = reactive({
 app.config.globalProperties.$moment = moment;
 
 // app config
-app.use(PrimeVue, { ripple: true, inputStyle: 'outlined' });
+app.use(PrimeVue, {
+    locale: {
+        startsWith: 'Começa com',
+        contains: 'Contem',
+        notContains: 'Não contem',
+        endsWith: 'Termina com',
+        equals: 'Igual',
+        notEquals: 'Não é igual',
+        noFilter: 'Sem filtro',
+        lt: 'Menor que',
+        lte: 'Menor que ou igual a',
+        gt: 'Maior que',
+        gte: 'Maior que ou igua a',
+        dateIs: 'Date é',
+        dateIsNot: 'Data não é',
+        dateBefore: 'Data é antes',
+        dateAfter: 'Data é depois',
+        clear: 'Limpar',
+        apply: 'Aplicar',
+        matchAll: 'Combinar tudo',
+        matchAny: 'Corresponder a qualquer',
+        addRule: 'Adicionar regra',
+        removeRule: 'Remover regra',
+        accept: 'Sim',
+        reject: 'Não',
+        dayNames: [
+            'Domingo',
+            'Segunda',
+            'Terça',
+            'Quarta',
+            'Quinta',
+            'Sexta',
+            'Sábado',
+        ],
+        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+        dayNamesMin: ['Do', 'Se', 'Te', 'Qu', 'Qu', 'Se', 'Sa'],
+        monthNames: [
+            'Janeiro',
+            'Fevereiro',
+            'Março',
+            'Abril',
+            'Maio',
+            'Junho',
+            'Julho',
+            'Agosto',
+            'Setembro',
+            'Outubro',
+            'Novembro',
+            'Dezembro',
+        ],
+        monthNamesShort: [
+            'Jan',
+            'Fev',
+            'Mar',
+            'Abr',
+            'Mai',
+            'Jun',
+            'Jul',
+            'Ago',
+            'Set',
+            'Out',
+            'Nov',
+            'Dez',
+        ],
+        today: 'Hoje',
+        weekHeader: 'Semana',
+        firstDayOfWeek: 0,
+        dateFormat: 'dd/mm/yy',
+    },
+    ripple: true,
+    inputStyle: 'outlined',
+});
+
 app.use(ConfirmationService);
 app.use(ToastService);
 app.use(router);
@@ -159,6 +233,8 @@ app.component('BtnAtualizar', BtnAtualizar);
 app.component('BtnDetalhar', BtnDetalhar);
 app.component('BtnDeletar', BtnDeletar);
 app.component('BtnInserir', BtnInserir);
+app.component('BtnSalvar', BtnSalvar);
+app.component('BtnCancelar', BtnCancelar);
 app.component('CardDash', CardDash);
 app.component('InformacoesUsuario', InformacoesUsuario);
 

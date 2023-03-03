@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import service from "./service";
+import { usuarioService } from "./service";
 
 export default {
   data() {
@@ -53,7 +53,7 @@ export default {
   },
   mounted() {
     if (this.$route.params.id) {
-      service.obterUsuario(this.$route.params.id).then((response) => {
+      usuarioService.obterUsuario(this.$route.params.id).then((response) => {
         if (response && response.success) {
           this.usuario = response.data;
         }

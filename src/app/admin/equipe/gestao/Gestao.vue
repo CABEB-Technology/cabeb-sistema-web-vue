@@ -1,5 +1,5 @@
 <template>
-  <painel titulo="Usuários" icone="pi pi-id-card" :refreshFunction="obterTodos">
+  <painel titulo="Gestão" icone="pi pi-id-card" :refreshFunction="obterTodos">
     <tabela headerStyle="width: 3em" id="tableComponent" :data="data">
       <template #botoes>
         <btn-inserir @click="inserir"></btn-inserir>
@@ -20,9 +20,9 @@
           </template>
         </Column>
 
-        <Column field="usuario" header="Usuário" :sortable="true">
+        <Column field="nome" header="Nome" :sortable="true">
           <template #body="slotProps">
-            {{ slotProps.data.usuario }}
+            {{ slotProps.data.nome }}
           </template>
         </Column>
 
@@ -32,9 +32,9 @@
           </template>
         </Column>
 
-        <Column field="cpf" header="CPF" :sortable="true">
+        <Column field="telefone" header="Telefone" :sortable="true">
           <template #body="slotProps">
-            {{ slotProps.data.cpf }}
+            {{ slotProps.data.telefone }}
           </template>
         </Column>
 
@@ -43,27 +43,24 @@
             {{ slotProps.data.modificadoDate }}
           </template>
         </Column>
+
+        <Column field="perfilEquipe" header="Perfil" :sortable="true">
+          <template #body="slotProps">
+            <Tag>{{ slotProps.data.perfilEquipe.perfil }}</Tag>
+          </template>
+        </Column>
       </template>
     </tabela>
   </painel>
-  <Dialog
-    header="Informações de Usuário"
-    v-model:visible="displayModal"
-    :style="{ width: '25vw' }"
-    :modal="true"
-  >
-    <InformacoesUsuario :data="usuario" />
-  </Dialog>
 </template>
 
 <script>
-import { usuarioService } from "./service";
+import { gestaoService } from "../service";
 
 export default {
   data() {
     return {
       data: [],
-      usuario: null,
       displayModal: false,
       items: [
         {
@@ -101,12 +98,12 @@ export default {
   methods: {
     obterTodos() {
       this.$store.dispatch("addRequest");
-      usuarioService.obterTodos().then((res) => {
+      gestaoService.obterGestao().then((res) => {
         if (res && res.success) {
           this.data = res.data;
-          this.data.forEach((usuario) => {
-            usuario.modificadoDate = this.$moment(
-              usuario.modificado,
+          this.data.forEach((integrante) => {
+            integrante.modificadoDate = this.$moment(
+              integrante.modificado,
               "yyyy-MM-dd HH:mm:ss"
             ).format("DD/MM/YYYY HH:mm:ss");
           });
@@ -116,16 +113,12 @@ export default {
     },
     inserir() {
       this.$router.push({
-        name: "usuario_inserir",
+        name: "gestao_inserir",
       });
-    },
-    detalhar(prop) {
-      this.usuario = prop;
-      this.displayModal = true;
     },
     editar(prop) {
       this.$router.push({
-        name: "usuario_atualizar",
+        name: "gestao_atualizar",
         params: {
           id: prop.id,
         },
@@ -133,7 +126,7 @@ export default {
     },
     confirmarExclusao(prop) {
       this.$confirm.require({
-        message: `Tem certeza que deseja deletar o usuário ${prop.usuario}?`,
+        message: `Tem certeza que deseja deletar o integrante ${prop.nome}?`,
         header: "Confirmação",
         icon: "pi pi-exclamation-triangle",
         acceptLabel: "Sim",
@@ -145,13 +138,13 @@ export default {
     },
     deletar(prop) {
       this.$store.dispatch("addRequest");
-      usuarioService.deletarUsuario(prop.id).then((res) => {
+      gestaoService.deletarIntegrante(prop.id).then((res) => {
         if (res && res.success) {
           this.obterTodos();
           this.$toast.add({
             severity: "success",
-            summary: "Usuario",
-            detail: "Usuário deletado com sucesso!",
+            summary: "Equipe",
+            detail: "Integrante deletado com sucesso!",
             life: 3000,
           });
           this.$store.dispatch("removeRequest");
