@@ -2,14 +2,14 @@ import { axiosJwt, urlBase } from '../../../service';
 
 const url = `${urlBase}/equipe`;
 
-export const gestaoService = {
+export const equipeService = {
     criarIntegrante(integrante) {
         return axiosJwt.post(`${url}`, integrante);
     },
-    obterGestao() {
-        return axiosJwt.get(`${url}/integrantes/${1}`);
+    obterIntegrantes(id) {
+        return axiosJwt.get(`${url}/integrantes/${id}`);
     },
-    obterIntegrante(id) {
+    obterIntegrantePorId(id) {
         return axiosJwt.get(`${url}/${id}`);
     },
     atualizarIntegrante(id, integrante) {
