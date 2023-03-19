@@ -51,17 +51,26 @@
         </Column>
       </template>
     </tabela>
+    <Dialog
+      header="Informações de Usuário"
+      v-model:visible="displayModal"
+      :style="{ width: '25vw' }"
+      :modal="true"
+    >
+      <InformacoesUsuario :data="integrante" />
+    </Dialog>
   </painel>
 </template>
 
 <script>
-import { gestaoService } from "../service";
+import { equipeService } from "../service";
 
 export default {
   data() {
     return {
       data: [],
       displayModal: false,
+      integrante: null,
       items: [
         {
           label: "Opções",
@@ -98,7 +107,7 @@ export default {
   methods: {
     obterTodos() {
       this.$store.dispatch("addRequest");
-      gestaoService.obterGestao().then((res) => {
+      equipeService.obterIntegrantes(1).then((res) => {
         if (res && res.success) {
           this.data = res.data;
           this.data.forEach((integrante) => {
@@ -138,7 +147,7 @@ export default {
     },
     deletar(prop) {
       this.$store.dispatch("addRequest");
-      gestaoService.deletarIntegrante(prop.id).then((res) => {
+      equipeService.deletarIntegrante(prop.id).then((res) => {
         if (res && res.success) {
           this.obterTodos();
           this.$toast.add({
@@ -150,6 +159,10 @@ export default {
           this.$store.dispatch("removeRequest");
         }
       });
+    },
+    detalhar(prop) {
+      this.integrante = prop;
+      this.displayModal = true;
     },
     toggle(event, objeto) {
       this.objeto = objeto;
