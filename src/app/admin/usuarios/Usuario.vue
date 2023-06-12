@@ -2,10 +2,10 @@
   <painel titulo="Usuários" icone="pi pi-id-card" :refreshFunction="obterTodos">
     <tabela headerStyle="width: 3em" id="tableComponent" :data="data">
       <template #botoes>
-        <btn-inserir @click="inserir"></btn-inserir>
+        <btn-inserir @click="inserir" v-if="false"></btn-inserir>
       </template>
       <template #conteudo>
-        <Column headerStyle="width: 3em">
+        <Column headerStyle="width: 3em" v-if="false">
           <template #body="slotProps">
             <Button
               type="button"
@@ -41,6 +41,12 @@
         <Column field="modificado" header="Modificado" :sortable="true">
           <template #body="slotProps">
             {{ slotProps.data.modificadoDate }}
+          </template>
+        </Column>
+
+        <Column header="Perfil" :sortable="true">
+          <template #body="">
+            <Tag>ADMINISTRADOR</Tag>
           </template>
         </Column>
       </template>

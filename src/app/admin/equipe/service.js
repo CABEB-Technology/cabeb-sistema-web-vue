@@ -18,4 +18,7 @@ export const equipeService = {
     deletarIntegrante(id) {
         return axiosJwt.delete(`${url}/${id}`);
     },
+    obterTodosPerfisEquipe() {
+        return axiosJwt.get(`${url}/perfis`);
+    }
 };

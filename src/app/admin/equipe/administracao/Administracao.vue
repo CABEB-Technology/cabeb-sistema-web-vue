@@ -1,5 +1,5 @@
 <template>
-  <painel titulo="Gestão" icone="pi pi-id-card" :refreshFunction="obterTodos">
+  <painel titulo="Administração" icone="pi pi-id-card" :refreshFunction="obterTodos">
     <tabela headerStyle="width: 3em" id="tableComponent" :data="data">
       <template #botoes>
         <btn-inserir @click="inserir"></btn-inserir>
@@ -113,7 +113,7 @@ export default {
   methods: {
     obterTodos() {
       this.$store.dispatch("addRequest");
-      equipeService.obterIntegrantes(1).then((res) => {
+      equipeService.obterIntegrantes(2).then((res) => {
         if (res && res.success) {
           this.data = res.data;
           this.data.forEach((integrante) => {
@@ -128,14 +128,14 @@ export default {
     },
     inserir() {
       this.$router.push({
-        name: "gestao_inserir"
+        name: "administracao_inserir",
       });
     },
     editar(prop) {
       this.$router.push({
-        name: "gestao_atualizar",
+        name: "administracao_atualizar",
         params: {
-          id: prop.id,
+          id: prop.id
         },
       });
     },

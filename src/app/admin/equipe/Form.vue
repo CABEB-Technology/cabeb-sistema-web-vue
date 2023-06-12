@@ -21,8 +21,8 @@
           <Dropdown
             v-model="integrante.perfilEquipe.id"
             :options="perfis"
-            optionLabel="name"
-            optionValue="code"
+            optionLabel="perfil"
+            optionValue="id"
           />
         </div>
       </div>
@@ -76,7 +76,7 @@
         <div class="field col-12 md:col-1">
           <label>N°</label>
           <div class="p-inputgroup">
-            <InputText  />
+            <InputText v-model="integrante.numero"  />
           </div>
         </div>
 
@@ -121,13 +121,14 @@ export default {
         matricula: null,
         endereco: null,
         telefone: null,
+        numero: null,
         dataNascimento: null,
         dataNascimentoDate: null,
         perfilEquipe: {
           id: null,
         },
       },
-      perfis: [{ name: "Gestão", code: 1 }],
+      perfis: [],
     };
   },
   mounted() {
@@ -142,6 +143,7 @@ export default {
         }
       });
     }
+    this.obterTodosPerfisEquipe();
   },
   methods: {
     inserir() {
@@ -182,6 +184,13 @@ export default {
         });
       }
       this.$store.dispatch("removeRequest");
+    },
+    obterTodosPerfisEquipe() {
+      equipeService.obterTodosPerfisEquipe().then((response) => {
+        if (response && response.success) {
+          this.perfis = response.data;
+        }
+      })
     },
     buscarCep() {
       this.$store.dispatch("addRequest");

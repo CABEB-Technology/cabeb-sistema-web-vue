@@ -1,7 +1,8 @@
+import { administracaoMenu } from './administracao/menu';
 import { gestaoMenu } from './gestao/menu';
 
 export const equipeMenu = {
     label: 'Equipe',
     icon: 'pi pi-users',
-    items: [gestaoMenu],
+    items: [gestaoMenu, administracaoMenu],
 };
